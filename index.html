@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Boolzapp</title>
 
+    <!-- Link Font "LATO" -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
     <!-- Link Fontawesome -->
     <link
       rel="stylesheet"
@@ -52,8 +60,12 @@
             <div class="section-head">
               <!-- AVATAR -->
               <div class="avatar-img-container">
-                <img class="avatar-img" src="./img/avatar_1.jpg" alt="" />
-                <span class="d-inline-block ms-2">Nome Utente</span>
+                <img
+                  class="avatar-img"
+                  src="./img/avatar_io.jpg"
+                  alt="my avatar"
+                />
+                <span class="d-inline-block ms-2">Sofia</span>
               </div>
               <!-- ICONS -->
               <div class="icons-container">
@@ -80,23 +92,66 @@
             </div>
             <!-- Search contact -->
             <div class="p-2">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="cerca o inizia una nuova chat"
-              />
+              <div class="search-bar">
+                <i class="fa fa-solid fa-magnifying-glass"></i>
+                <input
+                  type="text"
+                  class="form-control border-start-0 rounded-start-0"
+                  placeholder="cerca o inizia una nuova chat"
+                />
+              </div>
             </div>
             <!-- Contact list -->
-            <div id="contact-list-container"></div>
+            <div id="contact-list-container">
+              <ul class="ps-0">
+                <!-- Contact -->
+                <li
+                  v-for="(contact,index) in contacts"
+                  @click="selectContact(index)"
+                  class="contact"
+                  :class="index == activeContactIndex ? `active-contact` : ''"
+                >
+                  <div class="contact-container">
+                    <img
+                      class="avatar-img"
+                      :src="contact.avatar"
+                      :alt="contact.name"
+                    />
+                    <div class="contact-description">
+                      <div class="username">{{contact.name}}</div>
+                      <div class="last-message">
+                        {{contact.messages[contact.messages.length-1].message}}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="last-message-time">
+                    {{contact.messages[contact.messages.length-1].date}}
+                  </div>
+                </li>
+              </ul>
+            </div>
           </section>
+
           <!-- Sezione chat -->
           <section id="chat-section">
             <!-- Head section -->
             <div class="section-head">
               <!-- AVATAR -->
-              <div class="avatar-img-container">
-                <img class="avatar-img" src="./img/avatar_1.jpg" alt="" />
-                <span class="d-inline-block ms-2">Nome Utente</span>
+              <div class="chat-img-container">
+                <img
+                  class="avatar-img"
+                  :src="contacts[activeContactIndex].avatar"
+                  :alt="contacts[activeContactIndex].name"
+                />
+                <div class="active-chat-text">
+                  <div class="active-chat-title">
+                    {{contacts[activeContactIndex].name}}
+                  </div>
+                  <div class="last-access">
+                    {{contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length
+                    - 1].date}}
+                  </div>
+                </div>
               </div>
               <!-- ICONS -->
               <div class="icons-container">

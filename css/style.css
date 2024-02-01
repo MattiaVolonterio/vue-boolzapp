@@ -1,5 +1,5 @@
-.bordered {
-  border: 2px dashed red;
+body {
+  font-family: "Lato", sans-serif;
 }
 
 .wrapper-container {
@@ -38,6 +38,7 @@
 
 #contact-list-container {
   flex-grow: 1;
+  overflow: auto;
 }
 
 /* CHAT SECTION */
@@ -53,6 +54,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  flex-shrink: 0;
 
   padding-left: 15px;
   padding-right: 15px;
@@ -123,4 +126,94 @@
   color: rgba(131, 131, 131, 0.753);
 
   cursor: pointer;
+}
+
+/* SEARCH BAR */
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-bar i {
+  padding: 10px 20px 10px 20px;
+  border: 0.8px solid lightgray;
+  color: rgb(154, 154, 154);
+  border-radius: 5px 0 0 5px;
+
+  cursor: pointer;
+}
+
+/* CONTACT LIST */
+
+li {
+  list-style: none;
+}
+
+.contact {
+  display: flex;
+  border-top: 1px solid lightgray;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+
+  cursor: pointer;
+}
+
+.contact-container {
+  display: flex;
+  /*   align-items: center; */
+
+  width: 80%;
+
+  padding-left: 15px;
+}
+
+.contact-container > img {
+  height: 55px;
+  aspect-ratio: 1;
+}
+
+.contact-description {
+  margin-left: 10px;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.last-message {
+  font-size: 0.8rem;
+  color: rgb(167, 167, 167);
+}
+
+.last-message-time {
+  flex-grow: 1;
+  padding-right: 15px;
+  text-align: end;
+  font-size: 0.8rem;
+  color: rgb(167, 167, 167);
+}
+
+.active-contact {
+  background-color: rgb(232, 232, 232);
+}
+
+/* CHAT IMAGE CONTAINER */
+
+.chat-img-container {
+  display: flex;
+  align-items: center;
+}
+
+.active-chat-text {
+  margin-left: 10px;
+}
+
+.active-chat-title {
+  font-weight: bold;
+}
+
+.last-access {
+  font-size: 0.7rem;
+  color: rgb(138, 138, 138);
 }

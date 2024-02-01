@@ -164,11 +164,27 @@
             <div class="section-chat">
               <div class="chat-wrapper">
                 <div
-                  v-for="message in contacts[activeContactIndex].messages"
-                  class="message"
+                  v-for="(message, index) in contacts[activeContactIndex].messages"
+                  class="message dropdown"
                   :class="message.status == 'sent' ? 'sent' : 'received'"
                 >
-                  <div class="message-text">{{message.message}}</div>
+                  <div class="message-text">
+                    <span>{{message.message}}</span>
+                    <i
+                      class="fa-solid fa-chevron-down"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    ></i>
+                    <ul class="dropdown-menu">
+                      <li class="dropdown-item">Message Info</li>
+                      <li
+                        @click="deleteMessage(activeContactIndex, index)"
+                        class="dropdown-item"
+                      >
+                        Delete Message
+                      </li>
+                    </ul>
+                  </div>
                   <div class="message-date">{{splitDate(message.date)}}</div>
                 </div>
               </div>
@@ -181,7 +197,7 @@
 
               <div class="text-input">
                 <input
-                  v-model="newSentMessage.message"
+                  v-model.trim="newSentMessage.message"
                   @keyup.enter="sendNewMessage(activeContactIndex)"
                   type="text"
                   class="form-control p-2"

@@ -212,7 +212,22 @@ createApp({
         this.contacts[index].messages.push(newSentMessageCopy);
 
         this.newSentMessage.message = "";
+        setTimeout(this.generateReply(this.contacts[index].messages), 1000);
       }
+    },
+
+    generateReply(array) {
+      const replyMessage = {
+        date: "",
+        message: "OK!!",
+        status: "received",
+      };
+
+      array.push(replyMessage);
+    },
+
+    deleteMessage(chatIndex, messageindex) {
+      this.contacts[chatIndex].messages.splice(messageindex, 1);
     },
   },
 

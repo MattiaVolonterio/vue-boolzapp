@@ -234,11 +234,13 @@ li {
 
   margin: auto;
   margin-top: 30px;
+  margin-bottom: 30px;
 
   font-size: 0.8rem;
 }
 
 .message {
+  position: relative;
   width: 40%;
   padding-left: 1rem;
   padding-top: 0.5rem;
@@ -261,6 +263,12 @@ li {
   font-size: 0.7rem;
   color: rgb(157, 157, 157);
   text-align: end;
+}
+
+.message-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 /* WRITE MESSAGE */

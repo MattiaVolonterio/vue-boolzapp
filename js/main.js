@@ -193,6 +193,12 @@ createApp({
 
       return `Ultimo accesso il ${date} alle ${hour}`;
     },
+
+    splitDate(date) {
+      const splittedDate = date.split(" ");
+      [messageDate, hour] = splittedDate;
+      return hour;
+    },
   },
 
   beforeMount() {

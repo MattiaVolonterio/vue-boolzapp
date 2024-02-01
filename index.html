@@ -125,7 +125,7 @@
                     </div>
                   </div>
                   <div class="last-message-time">
-                    {{contact.messages[contact.messages.length-1].date}}
+                    {{splitDate(contact.messages[contact.messages.length-1].date)}}
                   </div>
                 </li>
               </ul>
@@ -161,9 +161,20 @@
               </div>
             </div>
             <!-- Chat section -->
-            <div class="section-chat">aaa</div>
+            <div class="section-chat">
+              <div class="chat-wrapper">
+                <div
+                  v-for="message in contacts[activeContactIndex].messages"
+                  class="message"
+                  :class="message.status == 'sent' ? 'sent' : 'received'"
+                >
+                  <div class="message-text">{{message.message}}</div>
+                  <div class="message-date">{{splitDate(message.date)}}</div>
+                </div>
+              </div>
+            </div>
             <!-- Write message section -->
-            <div class="section-write-message">aaa</div>
+            <div class="section-write-message"></div>
           </section>
         </div>
       </div>

@@ -1,3 +1,7 @@
+.bordered {
+  border: 1px dashed red;
+}
+
 body {
   font-family: "Lato", sans-serif;
 }
@@ -66,6 +70,7 @@ body {
 
 .section-chat {
   flex-grow: 1;
+  overflow: auto;
   background-image: url(../img/mine.jpg);
 }
 
@@ -216,4 +221,44 @@ li {
 .last-access {
   font-size: 0.7rem;
   color: rgb(138, 138, 138);
+}
+
+/* CHAT MAIN */
+
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 80%;
+
+  margin: auto;
+  margin-top: 30px;
+
+  font-size: 0.8rem;
+}
+
+.message {
+  width: 40%;
+  padding-left: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.2rem;
+  padding-right: 0.4rem;
+  border-radius: 10px;
+}
+
+.message.sent {
+  align-self: flex-end;
+  background-color: #d5f9ba;
+}
+
+.message.received {
+  align-self: flex-start;
+  background-color: #ffffff;
+}
+
+.message-date {
+  font-size: 0.7rem;
+  color: rgb(157, 157, 157);
+  text-align: end;
 }

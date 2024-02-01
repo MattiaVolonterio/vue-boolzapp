@@ -262,3 +262,25 @@ li {
   color: rgb(157, 157, 157);
   text-align: end;
 }
+
+/* WRITE MESSAGE */
+
+.section-write-message {
+  display: flex;
+}
+
+.emoji-selection,
+.audio-input {
+  width: 10%;
+  text-align: center;
+  font-size: 1.5rem;
+
+  color: grey;
+
+  cursor: pointer;
+}
+
+.text-input {
+  flex-grow: 1;
+  padding: 1rem;
+}

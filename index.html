@@ -174,7 +174,25 @@
               </div>
             </div>
             <!-- Write message section -->
-            <div class="section-write-message"></div>
+            <div class="section-write-message">
+              <div class="emoji-selection">
+                <i class="fa-regular fa-face-smile"></i>
+              </div>
+
+              <div class="text-input">
+                <input
+                  v-model="newSentMessage.message"
+                  @keyup.enter="sendNewMessage(activeContactIndex)"
+                  type="text"
+                  class="form-control p-2"
+                  placeholder="Scrivi un messaggio"
+                />
+              </div>
+
+              <div class="audio-input">
+                <i class="fa-solid fa-microphone"></i>
+              </div>
+            </div>
           </section>
         </div>
       </div>

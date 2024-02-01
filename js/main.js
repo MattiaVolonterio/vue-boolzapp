@@ -168,6 +168,12 @@ createApp({
       ],
 
       activeContactIndex: 0,
+
+      newSentMessage: {
+        date: "",
+        message: "",
+        status: "sent",
+      },
     };
   },
 
@@ -198,6 +204,15 @@ createApp({
       const splittedDate = date.split(" ");
       [messageDate, hour] = splittedDate;
       return hour;
+    },
+
+    sendNewMessage(index) {
+      if (this.newSentMessage.message) {
+        const newSentMessageCopy = { ...this.newSentMessage };
+        this.contacts[index].messages.push(newSentMessageCopy);
+
+        this.newSentMessage.message = "";
+      }
     },
   },
 

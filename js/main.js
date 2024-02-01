@@ -181,6 +181,18 @@ createApp({
     selectContact(index) {
       this.activeContactIndex = index;
     },
+
+    printLastMessageDate(index) {
+      const lastDate =
+        this.contacts[index].messages[this.contacts[index].messages.length - 1]
+          .date;
+
+      const lastDateArray = lastDate.split(" ");
+
+      [date, hour] = lastDateArray;
+
+      return `Ultimo accesso il ${date} alle ${hour}`;
+    },
   },
 
   beforeMount() {

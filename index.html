@@ -143,13 +143,13 @@
                   :src="contacts[activeContactIndex].avatar"
                   :alt="contacts[activeContactIndex].name"
                 />
+                <!-- TESTO DELL'AVATAR -->
                 <div class="active-chat-text">
                   <div class="active-chat-title">
                     {{contacts[activeContactIndex].name}}
                   </div>
                   <div class="last-access">
-                    {{contacts[activeContactIndex].messages[contacts[activeContactIndex].messages.length
-                    - 1].date}}
+                    {{printLastMessageDate(activeContactIndex)}}
                   </div>
                 </div>
               </div>

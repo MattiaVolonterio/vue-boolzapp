@@ -209,16 +209,22 @@ createApp({
     sendNewMessage(index) {
       if (this.newSentMessage.message) {
         const newSentMessageCopy = { ...this.newSentMessage };
+        const newCurrentDate = this.getCurrentDate();
+        newSentMessageCopy.date = newCurrentDate;
+
         this.contacts[index].messages.push(newSentMessageCopy);
 
         this.newSentMessage.message = "";
-        setTimeout(this.generateReply(this.contacts[index].messages), 1000);
+        setTimeout(() => {
+          this.generateReply(this.contacts[index].messages);
+        }, 1000);
       }
     },
 
     generateReply(array) {
+      const newCurrentDate = this.getCurrentDate();
       const replyMessage = {
-        date: "",
+        date: newCurrentDate,
         message: "OK!!",
         status: "received",
       };
@@ -228,6 +234,29 @@ createApp({
 
     deleteMessage(chatIndex, messageindex) {
       this.contacts[chatIndex].messages.splice(messageindex, 1);
+    },
+
+    getCurrentDate() {
+      let currentDay = new Date().getDate();
+      if (currentDay < 10) currentDay = "0" + currentDay;
+
+      let currentMonth = new Date().getMonth();
+      if (currentMonth < 10) currentMonth = "0" + currentMonth;
+
+      let currentYear = new Date().getFullYear();
+
+      let currentHours = new Date().getHours();
+      if (currentHours < 10) currentHours = "0" + currentHours;
+
+      let currentMins = new Date().getMinutes();
+      if (currentMins < 10) currentMins = "0" + currentMins;
+
+      let currentSec = new Date().getSeconds();
+      if (currentSec < 10) currentSec = "0" + currentSec;
+
+      let completeDate = `${currentDay}/${currentMonth}/${currentYear} ${currentHours}:${currentMins}:${currentSec}`;
+
+      return completeDate;
     },
   },
 

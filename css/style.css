@@ -90,9 +90,9 @@
 
 /* NOTIFICATION */
 
-.notification-title,
-.notification-subtitle {
-  display: block;
+.notification-container {
+  display: flex;
+  align-items: center;
 }
 
 .notification-bell {
@@ -103,4 +103,24 @@
   font-size: 1.3rem;
   aspect-ratio: 1;
   border-radius: 50%;
+}
+
+.notification-title,
+.notification-subtitle {
+  display: block;
+
+  margin-left: 15px;
+}
+
+.notification-title {
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+.notification-subtitle {
+  font-size: 0.8rem;
+  text-decoration: underline;
+  color: rgba(131, 131, 131, 0.753);
+
+  cursor: pointer;
 }

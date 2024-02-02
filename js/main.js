@@ -167,6 +167,39 @@ createApp({
         },
       ],
 
+      replyArray: [
+        {
+          date: "",
+          message: "OK!",
+          status: "received",
+        },
+        {
+          date: "",
+          message: "Tutto fatto!",
+          status: "received",
+        },
+        {
+          date: "20/03/2020 16:30:55",
+          message: "Bene grazie! Stasera ci vediamo?",
+          status: "received",
+        },
+        {
+          date: "",
+          message: "La Marianna va in campagna",
+          status: "received",
+        },
+        {
+          date: "",
+          message: "Ah scusa!",
+          status: "received",
+        },
+        {
+          date: "",
+          message: "Si, ma preferirei andare al cinema",
+          status: "received",
+        },
+      ],
+
       activeContactIndex: 0,
 
       newSentMessage: {
@@ -234,13 +267,13 @@ createApp({
 
     generateReply(array) {
       const newCurrentDate = this.getCurrentDate();
-      const replyMessage = {
-        date: newCurrentDate,
-        message: "OK!!",
-        status: "received",
-      };
+      const randomNumber = Math.floor(Math.random() * this.replyArray.length);
 
-      array.push(replyMessage);
+      const currentReply = this.replyArray[randomNumber];
+
+      currentReply.date = newCurrentDate;
+
+      array.push(currentReply);
     },
 
     deleteMessage(messageindex) {

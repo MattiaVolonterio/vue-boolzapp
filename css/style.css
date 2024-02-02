@@ -14,7 +14,7 @@ body {
     to bottom,
     #009688 0%,
     #009688 15%,
-    #d6dbd6 16%,
+    #d6dbd6 15%,
     #d6dbd6 100%
   );
 }
@@ -141,8 +141,6 @@ body {
   border: 0.8px solid lightgray;
   color: rgb(154, 154, 154);
   border-radius: 5px 0 0 5px;
-
-  cursor: pointer;
 }
 
 /* CONTACT LIST */
@@ -162,7 +160,6 @@ li {
 
 .contact-container {
   display: flex;
-  /*   align-items: center; */
 
   width: 80%;
 
@@ -245,6 +242,14 @@ li {
   border-radius: 10px;
 }
 
+.message:hover .fa-chevron-down {
+  display: block;
+}
+
+.fa-chevron-down {
+  display: none;
+}
+
 .message.sent {
   align-self: flex-end;
   background-color: #d5f9ba;
@@ -265,6 +270,7 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  word-break: break-all;
 }
 
 /* WRITE MESSAGE */

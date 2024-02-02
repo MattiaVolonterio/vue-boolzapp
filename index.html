@@ -95,6 +95,8 @@
               <div class="search-bar">
                 <i class="fa fa-solid fa-magnifying-glass"></i>
                 <input
+                  v-model="filterString"
+                  :change="filterContact(filterString)"
                   type="text"
                   class="form-control border-start-0 rounded-start-0"
                   placeholder="cerca o inizia una nuova chat"
@@ -108,6 +110,7 @@
                 <li
                   v-for="(contact,index) in contacts"
                   @click="selectContact(index)"
+                  v-show="contact.visible"
                   class="contact"
                   :class="index == activeContactIndex ? `active-contact` : ''"
                 >

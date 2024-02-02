@@ -174,6 +174,8 @@ createApp({
         message: "",
         status: "sent",
       },
+
+      filterString: "",
     };
   },
 
@@ -237,26 +239,42 @@ createApp({
     },
 
     getCurrentDate() {
-      let currentDay = new Date().getDate();
+      let now = new Date();
+
+      let currentDay = now.getDate();
       if (currentDay < 10) currentDay = "0" + currentDay;
 
-      let currentMonth = new Date().getMonth();
+      let currentMonth = now.getMonth() + 1;
       if (currentMonth < 10) currentMonth = "0" + currentMonth;
 
-      let currentYear = new Date().getFullYear();
+      let currentYear = now.getFullYear();
 
-      let currentHours = new Date().getHours();
+      let currentHours = now.getHours();
       if (currentHours < 10) currentHours = "0" + currentHours;
 
-      let currentMins = new Date().getMinutes();
+      let currentMins = now.getMinutes();
       if (currentMins < 10) currentMins = "0" + currentMins;
 
-      let currentSec = new Date().getSeconds();
+      let currentSec = now.getSeconds();
       if (currentSec < 10) currentSec = "0" + currentSec;
 
       let completeDate = `${currentDay}/${currentMonth}/${currentYear} ${currentHours}:${currentMins}:${currentSec}`;
 
       return completeDate;
+    },
+
+    filterContact(string) {
+      if (string) {
+        this.contacts.forEach((contact) => {
+          contact.visible = contact.name.toLowerCase().includes(string)
+            ? true
+            : false;
+        });
+      } else if (!string) {
+        this.contacts.forEach((contact) => {
+          contact.visible = true;
+        });
+      }
     },
   },
 

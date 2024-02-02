@@ -125,12 +125,18 @@
                     />
                     <div class="contact-description">
                       <div class="username">{{contact.name}}</div>
-                      <div class="last-message">
+                      <div
+                        v-if="contact.messages.length > 0"
+                        class="last-message"
+                      >
                         {{contact.messages[contact.messages.length-1].message}}
                       </div>
                     </div>
                   </div>
-                  <div class="last-message-time">
+                  <div
+                    v-if="contact.messages.length > 0"
+                    class="last-message-time"
+                  >
                     {{splitDate(contact.messages[contact.messages.length-1].date)}}
                   </div>
                 </li>

@@ -197,15 +197,18 @@ createApp({
     },
 
     printLastMessageDate(index) {
-      const lastDate =
-        this.contacts[index].messages[this.contacts[index].messages.length - 1]
-          .date;
+      if (this.activeContact.messages.length > 0) {
+        const lastDate =
+          this.contacts[index].messages[
+            this.contacts[index].messages.length - 1
+          ].date;
 
-      const lastDateArray = lastDate.split(" ");
+        const lastDateArray = lastDate.split(" ");
 
-      [date, hour] = lastDateArray;
+        [date, hour] = lastDateArray;
 
-      return `Ultimo accesso il ${date} alle ${hour}`;
+        return `Ultimo accesso il ${date} alle ${hour}`;
+      } else return "";
     },
 
     splitDate(date) {
@@ -243,13 +246,13 @@ createApp({
     deleteMessage(messageindex) {
       this.activeContact.messages.splice(messageindex, 1);
 
-      if (this.activeContact.messages.length == 0) {
+      /*       if (this.activeContact.messages.length == 0) {
         this.contacts.splice(this.activeContactIndex, 1);
 
         if (this.activeContactIndex >= this.contacts.length - 1) {
           this.activeContactIndex = this.contacts.length - 1;
         }
-      }
+      } */
     },
 
     getCurrentDate() {

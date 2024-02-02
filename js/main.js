@@ -245,14 +245,18 @@ createApp({
 
     deleteMessage(messageindex) {
       this.activeContact.messages.splice(messageindex, 1);
+    },
 
-      /*       if (this.activeContact.messages.length == 0) {
-        this.contacts.splice(this.activeContactIndex, 1);
+    deleteSingleChat() {
+      this.contacts.splice(this.activeContactIndex, 1);
 
-        if (this.activeContactIndex >= this.contacts.length - 1) {
-          this.activeContactIndex = this.contacts.length - 1;
-        }
-      } */
+      if (this.activeContactIndex >= this.contacts.length - 1) {
+        this.activeContactIndex = this.contacts.length - 1;
+      }
+    },
+
+    deleteAllChat() {
+      this.contacts.splice(0, this.contacts.length);
     },
 
     getCurrentDate() {
@@ -292,6 +296,23 @@ createApp({
           contact.visible = true;
         });
       }
+    },
+
+    createNewChat() {
+      let insertName = prompt("Inserisci il nome del contatto:");
+      while (insertName == "") {
+        insertName = prompt(
+          "Inserisci il nome del contatto (Non può essere vuoto):"
+        );
+      }
+      let newContact = {
+        name: insertName,
+        avatar: "./img/avatar_1.jpg",
+        visible: true,
+        messages: [],
+      };
+
+      this.contacts.push(newContact);
     },
   },
 

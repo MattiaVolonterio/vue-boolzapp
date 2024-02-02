@@ -74,7 +74,17 @@
               <div class="icons-container">
                 <i class="fa-solid fa-circle-notch"></i>
                 <i class="fa-solid fa-message"></i>
-                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <div class="dropdownn d-inline-block">
+                  <i
+                    class="fa-solid fa-ellipsis-vertical"
+                    data-bs-toggle="dropdown"
+                  ></i>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li @click="createNewChat()" class="dropdown-item">
+                      Crea Nuova Chat
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
             <!-- Notification info section -->
@@ -102,7 +112,7 @@
                   :change="filterContact(filterString)"
                   type="text"
                   class="form-control border-start-0 rounded-start-0"
-                  placeholder="cerca o inizia una nuova chat"
+                  placeholder="cerca una chat"
                 />
               </div>
             </div>
@@ -172,7 +182,20 @@
               <div class="icons-container">
                 <i class="fa-solid fa-magnifying-glass"></i>
                 <i class="fa-solid fa-paperclip"></i>
-                <i class="fa-solid fa-ellipsis-vertical"></i>
+                <div class="dropdownn d-inline-block">
+                  <i
+                    class="fa-solid fa-ellipsis-vertical"
+                    data-bs-toggle="dropdown"
+                  ></i>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li @click="deleteSingleChat()" class="dropdown-item">
+                      Elimina chat
+                    </li>
+                    <li @click="deleteAllChat()" class="dropdown-item">
+                      Elimina Tutte le chat
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
             <!-- Chat section -->

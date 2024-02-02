@@ -96,6 +96,10 @@ body {
   cursor: pointer;
 }
 
+.dropdown-item {
+  cursor: pointer;
+}
+
 /* NOTIFICATION */
 
 .notification-container {

@@ -55,7 +55,10 @@
       <div class="wrapper-container">
         <div class="chat-container">
           <!-- Sezione contatti -->
-          <section id="contact-section">
+          <section
+            id="contact-section"
+            :class="!contacts.length > 0 ? 'full-screen' : ''"
+          >
             <!-- Head section -->
             <div class="section-head">
               <!-- AVATAR -->
@@ -104,7 +107,7 @@
               </div>
             </div>
             <!-- Contact list -->
-            <div id="contact-list-container">
+            <div v-if="contacts.length > 0" class="contact-list-container">
               <ul class="ps-0">
                 <!-- Contact -->
                 <li
@@ -133,18 +136,21 @@
                 </li>
               </ul>
             </div>
+            <div v-else class="contact-list-container">
+              <p class="mt-3 ms-3">Nessuna Chat disponibile</p>
+            </div>
           </section>
 
           <!-- Sezione chat -->
-          <section id="chat-section">
+          <section v-if="contacts.length > 0" id="chat-section">
             <!-- Head section -->
             <div class="section-head">
               <!-- AVATAR -->
               <div class="chat-img-container">
                 <img
                   class="avatar-img"
-                  :src="contacts[activeContactIndex].avatar"
-                  :alt="contacts[activeContactIndex].name"
+                  :src="activeContact.avatar"
+                  :alt="activeContact.name"
                 />
                 <!-- TESTO DELL'AVATAR -->
                 <div class="active-chat-text">
@@ -167,7 +173,7 @@
             <div class="section-chat">
               <div class="chat-wrapper">
                 <div
-                  v-for="(message, index) in contacts[activeContactIndex].messages"
+                  v-for="(message, index) in activeContact.messages"
                   class="message dropdown"
                   :class="message.status == 'sent' ? 'sent' : 'received'"
                 >
@@ -180,10 +186,7 @@
                     ></i>
                     <ul class="dropdown-menu">
                       <li class="dropdown-item">Message Info</li>
-                      <li
-                        @click="deleteMessage(activeContactIndex, index)"
-                        class="dropdown-item"
-                      >
+                      <li @click="deleteMessage(index)" class="dropdown-item">
                         Delete Message
                       </li>
                     </ul>

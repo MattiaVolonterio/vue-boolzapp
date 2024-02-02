@@ -36,7 +36,11 @@ body {
   border-right: 1px solid gray;
 }
 
-#contact-list-container {
+#contact-section.full-screen {
+  width: 100%;
+}
+
+.contact-list-container {
   flex-grow: 1;
   overflow: auto;
 }

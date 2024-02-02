@@ -179,6 +179,12 @@ createApp({
     };
   },
 
+  computed: {
+    activeContact() {
+      return this.contacts[this.activeContactIndex];
+    },
+  },
+
   methods: {
     convertImage() {
       this.contacts.forEach((contact) => {
@@ -234,8 +240,16 @@ createApp({
       array.push(replyMessage);
     },
 
-    deleteMessage(chatIndex, messageindex) {
-      this.contacts[chatIndex].messages.splice(messageindex, 1);
+    deleteMessage(messageindex) {
+      this.activeContact.messages.splice(messageindex, 1);
+
+      if (this.activeContact.messages.length == 0) {
+        this.contacts.splice(this.activeContactIndex, 1);
+
+        if (this.activeContactIndex >= this.contacts.length - 1) {
+          this.activeContactIndex = this.contacts.length - 1;
+        }
+      }
     },
 
     getCurrentDate() {

@@ -1840,17 +1840,11 @@ createApp({
     },
 
     filterContact(string) {
-      if (string) {
-        this.contacts.forEach((contact) => {
-          contact.visible = contact.name.toLowerCase().includes(string)
-            ? true
-            : false;
-        });
-      } else if (!string) {
-        this.contacts.forEach((contact) => {
-          contact.visible = true;
-        });
-      }
+      this.contacts.filter((contact) => {
+        return (contact.visible = contact.name.toLowerCase().includes(string)
+          ? true
+          : false);
+      });
     },
 
     createNewChat() {

@@ -1840,7 +1840,7 @@ createApp({
     },
 
     filterContact(string) {
-      this.contacts.filter((contact) => {
+      this.contacts.map((contact) => {
         return (contact.visible = contact.name.toLowerCase().includes(string)
           ? true
           : false);

@@ -302,3 +302,20 @@ li {
   flex-grow: 1;
   padding: 1rem;
 }
+
+.emoji-menu-container {
+  position: relative;
+}
+
+.emoji-menu {
+  position: absolute;
+  bottom: 53px;
+  left: 50%;
+
+  overflow: auto;
+
+  width: 250px;
+  height: 150px;
+
+  background-color: rgb(230, 230, 230);
+}

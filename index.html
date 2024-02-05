@@ -227,7 +227,22 @@
             <!-- Write message section -->
             <div class="section-write-message">
               <div class="emoji-selection">
-                <i class="fa-regular fa-face-smile"></i>
+                <div @click="activateEmojiMenu()" class="emoji-menu-container">
+                  <i class="fa-regular fa-face-smile"></i>
+                  <div
+                    class="emoji-menu"
+                    :class="emojiIsActive ? 'd-block' : 'd-none'"
+                  >
+                    <ul class="d-flex flex-wrap p-1">
+                      <li
+                        v-for="(emoji, index) in emojis"
+                        @click="selectEmoji(index)"
+                      >
+                        {{emoji}}
+                      </li>
+                    </ul>
+                  </div>
+                </div>
               </div>
 
               <div class="text-input">

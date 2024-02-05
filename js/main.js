@@ -1734,6 +1734,8 @@ createApp({
 
       shownElement: "chat",
 
+      landingPageIsOn: true,
+
       activeContactIndex: 0,
 
       activeAvatarIndex: 0,
@@ -1908,6 +1910,10 @@ createApp({
 
     selectEmoji(index) {
       this.newSentMessage.message += this.emojis[index];
+    },
+
+    switchLandingPage() {
+      this.landingPageIsOn = !this.landingPageIsOn;
     },
   },
 

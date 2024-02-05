@@ -53,7 +53,16 @@
     <div id="app">
       <!-- WRAPPER -->
       <div class="wrapper-container">
-        <div class="chat-container">
+        <!-- LANDING PAGE CONTAINER -->
+        <div v-if="landingPageIsOn" class="landing-page">
+          <img src="./img/matti.png" alt="logo" class="logo-image" />
+
+          <button @click="switchLandingPage()" class="btn btn-success">
+            ACCEDI
+          </button>
+        </div>
+        <!-- CHAT CONTAINER -->
+        <div v-else class="chat-container">
           <!-- Sezione contatti -->
           <section id="contact-section">
             <!-- Head section -->
@@ -79,6 +88,9 @@
                   <ul class="dropdown-menu dropdown-menu-end">
                     <li @click="createNewChat()" class="dropdown-item">
                       Crea Nuova Chat
+                    </li>
+                    <li @click="switchLandingPage()" class="dropdown-item">
+                      Log-Out
                     </li>
                   </ul>
                 </div>
@@ -260,7 +272,7 @@
               </div>
             </div>
           </section>
-
+          <!-- section form add contact -->
           <section
             v-else="shownElement == 'contact-input-form'"
             id="chat-section-add-contact-form"

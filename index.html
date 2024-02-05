@@ -55,10 +55,7 @@
       <div class="wrapper-container">
         <div class="chat-container">
           <!-- Sezione contatti -->
-          <section
-            id="contact-section"
-            :class="!contacts.length > 0 ? 'full-screen' : ''"
-          >
+          <section id="contact-section">
             <!-- Head section -->
             <div class="section-head">
               <!-- AVATAR -->
@@ -158,7 +155,10 @@
           </section>
 
           <!-- Sezione chat -->
-          <section v-if="contacts.length > 0" id="chat-section">
+          <section
+            v-if="shownElement == 'chat' && contacts.length > 0"
+            id="chat-section"
+          >
             <!-- Head section -->
             <div class="section-head">
               <!-- AVATAR -->
@@ -258,6 +258,54 @@
               <div class="audio-input">
                 <i class="fa-solid fa-microphone"></i>
               </div>
+            </div>
+          </section>
+
+          <section
+            v-else="shownElement == 'contact-input-form'"
+            id="chat-section-add-contact-form"
+          >
+            <div class="create-new-contact-wrapper">
+              <div class="contact-input-form">
+                <h2>Crea un nuovo contatto</h2>
+
+                <div class="mb-3">
+                  <label class="form-label"
+                    >Inserisci il nome del contatto</label
+                  >
+                  <input v-model="inputName" type="text" class="form-control" />
+
+                  <div
+                    class="p-3 mt-2 text-primary-emphasis bg-danger-subtle border border-danger-subtle rounded-3"
+                    :class="errorShow ? 'd-block' : 'd-none'"
+                  >
+                    Inserisci un valore valido (Non può essere vuoto)
+                  </div>
+                </div>
+              </div>
+
+              <div class="avatar-wrapper">
+                <h2>Seleziona l'immagine del profilo</h2>
+                <ul class="p-0 d-flex flex-wrap">
+                  <li v-for="(avatar, index) in avatarArray">
+                    <img
+                      @click="selectAvatar(index)"
+                      :src="avatar"
+                      alt="user-image"
+                      class="avatar-selection"
+                      :class="index == activeAvatarIndex ? `active-avatar` : ''"
+                    />
+                  </li>
+                </ul>
+              </div>
+
+              <button
+                @click="createNewContact()"
+                class="btn btn-primary"
+                id="add-button"
+              >
+                Aggiungi contatto
+              </button>
             </div>
           </section>
         </div>

@@ -1720,13 +1720,33 @@ createApp({
         },
       ],
 
+      avatarArray: [
+        "./img/avatar_1.jpg",
+        "./img/avatar_2.jpg",
+        "./img/avatar_3.jpg",
+        "./img/avatar_4.jpg",
+        "./img/avatar_5.jpg",
+        "./img/avatar_6.jpg",
+        "./img/avatar_7.jpg",
+        "./img/avatar_8.jpg",
+        "./img/avatar_io.jpg",
+      ],
+
+      shownElement: "chat",
+
       activeContactIndex: 0,
+
+      activeAvatarIndex: 0,
+
+      inputName: "",
 
       newSentMessage: {
         date: "",
         message: "",
         status: "sent",
       },
+
+      errorShow: false,
 
       filterString: "",
 
@@ -1737,6 +1757,10 @@ createApp({
   computed: {
     activeContact() {
       return this.contacts[this.activeContactIndex];
+    },
+
+    activeAvatar() {
+      return this.avatarArray[this.activeAvatarIndex];
     },
   },
 
@@ -1749,6 +1773,10 @@ createApp({
 
     selectContact(index) {
       this.activeContactIndex = index;
+    },
+
+    selectAvatar(index) {
+      this.activeAvatarIndex = index;
     },
 
     printLastMessageDate(index) {
@@ -1840,28 +1868,38 @@ createApp({
     },
 
     filterContact(string) {
-      this.contacts.map((contact) => {
-        return (contact.visible = contact.name.toLowerCase().includes(string)
+      this.contacts.forEach((contact) => {
+        contact.visible = contact.name
+          .toLowerCase()
+          .includes(string.toLowerCase())
           ? true
-          : false);
+          : false;
       });
     },
 
     createNewChat() {
-      let insertName = prompt("Inserisci il nome del contatto:");
-      while (insertName == "") {
-        insertName = prompt(
-          "Inserisci il nome del contatto (Non può essere vuoto):"
-        );
-      }
-      let newContact = {
-        name: insertName,
-        avatar: "./img/avatar_1.jpg",
-        visible: true,
-        messages: [],
-      };
+      this.shownElement = "contact-input-form";
+    },
 
-      this.contacts.push(newContact);
+    createNewContact() {
+      if (this.inputName) {
+        let newContact = {
+          name: this.inputName,
+          avatar: this.activeAvatar,
+          visible: true,
+          messages: [],
+        };
+
+        this.contacts.push(newContact);
+
+        this.inputName = "";
+
+        this.activeContactIndex = this.contacts.length - 1;
+
+        (this.errorShow = false), (this.shownElement = "chat");
+      } else {
+        this.errorShow = true;
+      }
     },
 
     activateEmojiMenu() {

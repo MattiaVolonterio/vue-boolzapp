@@ -36,10 +36,6 @@ body {
   border-right: 1px solid gray;
 }
 
-#contact-section.full-screen {
-  width: 100%;
-}
-
 .contact-list-container {
   flex-grow: 1;
   overflow: auto;
@@ -47,10 +43,16 @@ body {
 
 /* CHAT SECTION */
 
-#chat-section {
+#chat-section,
+#chat-section-add-contact-form {
   display: flex;
   flex-direction: column;
   width: 65%;
+}
+
+#chat-section-add-contact-form {
+  background-image: url(../img/mine.jpg);
+  border: 1px solid black;
 }
 
 .section-head,
@@ -181,6 +183,8 @@ li {
 
 .contact-description {
   margin-left: 10px;
+
+  overflow: hidden;
 }
 
 .username {
@@ -190,6 +194,10 @@ li {
 .last-message {
   font-size: 0.8rem;
   color: rgb(167, 167, 167);
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .last-message-time {
@@ -318,4 +326,39 @@ li {
   height: 150px;
 
   background-color: rgb(230, 230, 230);
+}
+
+/* CREATE NEW CONTACT */
+
+.create-new-contact-wrapper {
+  height: 100%;
+
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.avatar-selection {
+  width: 80px;
+  aspect-ratio: 1;
+
+  border-radius: 50%;
+
+  margin-right: 10px;
+  margin-top: 10px;
+
+  filter: brightness(80%);
+
+  cursor: pointer;
+}
+
+.avatar-selection.active-avatar {
+  border: 2px solid limegreen;
+
+  filter: brightness(100%);
+}
+
+#add-button {
+  align-self: flex-start;
 }

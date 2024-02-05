@@ -318,6 +318,13 @@
               >
                 Aggiungi contatto
               </button>
+              <div
+                @click="dismissContactForm()"
+                v-if="contacts.length > 0"
+                class="dismiss_form"
+              >
+                <i class="fa-regular fa-circle-xmark"></i>
+              </div>
             </div>
           </section>
         </div>

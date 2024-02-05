@@ -372,6 +372,18 @@ li {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  position: relative;
+}
+
+.dismiss_form {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+
+  font-size: 1.5rem;
+
+  cursor: pointer;
 }
 
 .avatar-selection {

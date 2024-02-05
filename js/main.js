@@ -1915,6 +1915,10 @@ createApp({
     switchLandingPage() {
       this.landingPageIsOn = !this.landingPageIsOn;
     },
+
+    dismissContactForm() {
+      this.shownElement = "chat";
+    },
   },
 
   beforeMount() {

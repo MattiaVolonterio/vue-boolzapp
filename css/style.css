@@ -39,7 +39,7 @@ body {
 
 .logo-image {
   width: 30%;
-  animation: scaleLogo 3s ease-in-out infinite;
+  animation: scaleLogo 3s linear infinite;
 }
 
 @keyframes scaleLogo {
@@ -47,10 +47,7 @@ body {
     transform: scale(1);
   }
   25% {
-    transform: scale(0.7);
-  }
-  50% {
-    transform: scale(1);
+    transform: scale(0.8);
   }
   75% {
     transform: scale(1.2);
@@ -65,7 +62,7 @@ body {
 #contact-section {
   display: flex;
   flex-direction: column;
-  width: 35%;
+  width: 350px;
 
   background-color: #ffffff;
   border-right: 1px solid gray;
@@ -82,7 +79,7 @@ body {
 #chat-section-add-contact-form {
   display: flex;
   flex-direction: column;
-  width: 65%;
+  width: calc(100% - 350px);
 }
 
 #chat-section-add-contact-form {
